@@ -94,7 +94,6 @@ GameWindow {
           width: Math.round(height /  240 * 408) // width/height ratio should remain constant
           anchors.centerIn: scene.gameWindowAnchorItem
           z:1
-          x:120
         }
 
 

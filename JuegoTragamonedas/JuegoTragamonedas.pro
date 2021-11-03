@@ -65,4 +65,7 @@ DISTFILES += \
     qml/config/SymbolConfig.qml \
     qml/config/qmldir \
     qml/slotmachine/Juegoslot.qml \
-    qml/slotmachine/Symbol.qml
+    qml/slotmachine/LineSymbol.qml \
+    qml/slotmachine/Symbol.qml \
+    qml/slotmachine/WinValidator.qml \
+    qml/slotmachine/WinningLine.qml

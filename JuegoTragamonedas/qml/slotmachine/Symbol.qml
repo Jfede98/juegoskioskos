@@ -9,7 +9,9 @@ Item {
   Image {
     id: image
     anchors.fill: parent
-    anchors.topMargin: 5
-    anchors.bottomMargin: 5
+    anchors.topMargin: 25
+    anchors.bottomMargin: 25
+    anchors.leftMargin: 15
+    anchors.rightMargin: 15
   }
 }
