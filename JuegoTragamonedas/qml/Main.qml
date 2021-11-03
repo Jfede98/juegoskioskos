@@ -18,7 +18,7 @@ GameWindow {
   // the content of the logical scene size (480x320 for landscape mode by default) gets scaled to the window size based on the scaleMode
   // you can set this size to any resolution you would like your project to start with, most of the times the one of your main target device
   // this resolution is for iPhone 4 & iPhone 4S
-  width: 927
+  width: 937
   height: 1648
 
   Scene {
@@ -87,6 +87,47 @@ GameWindow {
     }
 
 
+    Image {
+        id: pinkmac
+        source: "../assets/pinkmac.png"
+        smooth: true
+        opacity: 1
+        width: 150
+        height: 150
+        x: 267
+        y: 265
+
+        MouseArea {
+            id: mouseArea
+            anchors.fill: parent
+            anchors.margins: -10
+            hoverEnabled: true //this line will enable mouseArea.containsMouse
+        }
+
+
+         states: State {
+             name: "mouse-over"; when: mouseArea.containsMouse
+             PropertyChanges { target: pinkmac; scale: 0.8; opacity: 0}
+             PropertyChanges { target: greymac; scale: 0.8; opacity: 1}
+         }
+
+        transitions: Transition {
+                 NumberAnimation { properties: "scale, opacity"; easing.type: Easing.InOutQuad; duration: 1000  }
+             }
+
+    }
+
+
+    Image {
+        id: greymac
+        source: "../assets/greymac.png"
+        smooth: true
+        opacity: 0
+        anchors.fill: pinkmac
+    }
+
+
+
     // validator to check if player has won
         WinValidator {
           id: winValidator
@@ -94,7 +135,6 @@ GameWindow {
           width: Math.round(height /  240 * 408) // width/height ratio should remain constant
           anchors.centerIn: scene.gameWindowAnchorItem
           z:1
-          x:120
         }
 
 
