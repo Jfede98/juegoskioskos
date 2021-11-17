@@ -30,13 +30,14 @@ GameWindow {
 
     // properties for the game
     property int betAmount: 1 // amount to bet per line
-    property int creditAmount: 4 // player credit for gambling
+    property int creditAmount: 400 // player credit for gambling
 
 
     // animate credit amount when changed
     Behavior on creditAmount {
       PropertyAnimation { duration: scene.betAmount * 50 }
     }
+
 
     // fill game window with background
     Rectangle {
@@ -68,8 +69,6 @@ GameWindow {
         height: 635
     }
 
-
-
     Juegoslot{
         id: slotMachine
         x: 163
@@ -93,6 +92,11 @@ GameWindow {
 
     }
 
+
+
+
+
+
     Image {
         id: maquina
         source: "../assets/Frame_bg.png"
@@ -101,7 +105,6 @@ GameWindow {
         x: 110
         y: 400
     }
-
 
     Image {
         id: titulo
@@ -203,16 +206,11 @@ GameWindow {
     Image {
         id: lost
         source: "../assets/perdiste.png"
-        visible: false
-        x: 95
+        opacity: 1
+        x: 110
         y: 450
         width: 475
         height: 375
-        z:1
-        MouseArea{
-            anchors.fill: parent
-            onClicked: scene.restartGame()
-        }
     }
 
 
@@ -335,8 +333,6 @@ GameWindow {
               var stopInterval = utils.generateRandomValueBetween(500, 1000) // between 500 and 1000 ms
               slotMachine.spin(stopInterval)
             }
-            if(scene.creditAmount === 0)
-                lost.visible= true
         }
 
         function spinEnded() {
@@ -348,10 +344,6 @@ GameWindow {
             startSlotMachine()
         }
 
-        function restartGame(){
-            lost.visible = false
-            scene.creditAmount = 4
-        }
 
   }
 }

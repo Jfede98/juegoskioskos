@@ -29,8 +29,8 @@ GameWindow {
     height: 1160
 
     // properties for the game
-    property int betAmount: 1 // amount to bet per line
-    property int creditAmount: 4 // player credit for gambling
+    property int betAmount: 4 // amount to bet per line
+    property int creditAmount: 400 // player credit for gambling
 
 
     // animate credit amount when changed
@@ -38,37 +38,12 @@ GameWindow {
       PropertyAnimation { duration: scene.betAmount * 50 }
     }
 
+
     // fill game window with background
     Rectangle {
       anchors.fill: scene.gameWindowAnchorItem
       color: "#8A2E73"
     }
-
-    Image {
-      id: watermark
-      anchors.fill: scene
-      source: "../assets/watermark_bg.png"
-    }
-
-    Image {
-        id: rightlight
-        source: "../assets/right_light.png"
-        x: 110
-        y: 520
-        width: 550
-        height: 635
-    }
-
-    Image {
-        id: leftlight
-        source: "../assets/left_light.png"
-        x: -17
-        y: 520
-        width: 550
-        height: 635
-    }
-
-
 
     Juegoslot{
         id: slotMachine
@@ -94,6 +69,15 @@ GameWindow {
     }
 
     Image {
+      id: watermark
+      anchors.fill: scene
+      source: "../assets/watermark_bg.png"
+    }
+
+
+
+
+    Image {
         id: maquina
         source: "../assets/Frame_bg.png"
         width: 430
@@ -101,7 +85,6 @@ GameWindow {
         x: 110
         y: 400
     }
-
 
     Image {
         id: titulo
@@ -122,7 +105,7 @@ GameWindow {
         height: 150
         x: 257
         y: 415
-
+        visible: true
 
         MouseArea {
             id: mouseArea
@@ -134,8 +117,8 @@ GameWindow {
 
 
          states: State {
-             name: "mouse-over"; when: mouseArea.containsMouse
-             PropertyChanges { target: pinkmac; scale: 0.8; opacity: 0 }
+             name: "mouse-over"; when: pinkmac.opacity= 1
+
              PropertyChanges { target: greymac; scale: 0.8; opacity: 1}
          }
 
@@ -152,19 +135,6 @@ GameWindow {
         smooth: true
         opacity: 0
         anchors.fill: pinkmac
-    }
-
-    Image {
-        id: presionar
-        source: "../assets/Iconos-Boton.png"
-        x: 243
-        y: 950
-        width: 175
-        height: 75
-        MouseArea {
-          anchors.fill: parent
-          onClicked: scene.startSlotMachine()
-        }
     }
 
     Image {
@@ -200,20 +170,7 @@ GameWindow {
         radius: width / 2
     }
 
-    Image {
-        id: lost
-        source: "../assets/perdiste.png"
-        visible: false
-        x: 95
-        y: 450
-        width: 475
-        height: 375
-        z:1
-        MouseArea{
-            anchors.fill: parent
-            onClicked: scene.restartGame()
-        }
-    }
+
 
 
     // validator to check if player has won
@@ -221,7 +178,7 @@ GameWindow {
           id: winValidator
           height: slotMachine.height // height is the same as slotmachine height
           width: Math.round(height /  240 * 408) // width/height ratio should remain constant
-          anchors.centerIn: slotMachine
+          anchors.centerIn: scene.gameWindowAnchorItem
           z:1
         }
 
@@ -241,7 +198,6 @@ GameWindow {
 
         // configure bottom bar
         BottomBar {
-          opacity: 0
           id: bottomBar
           width: scene.gameWindowAnchorItem.width
           anchors.bottom: scene.gameWindowAnchorItem.bottom
@@ -335,8 +291,6 @@ GameWindow {
               var stopInterval = utils.generateRandomValueBetween(500, 1000) // between 500 and 1000 ms
               slotMachine.spin(stopInterval)
             }
-            if(scene.creditAmount === 0)
-                lost.visible= true
         }
 
         function spinEnded() {
@@ -346,11 +300,6 @@ GameWindow {
             winValidator.showWinningLines()
           else if(bottomBar.autoActive)
             startSlotMachine()
-        }
-
-        function restartGame(){
-            lost.visible = false
-            scene.creditAmount = 4
         }
 
   }
