@@ -23,7 +23,7 @@ SlotMachine {
   // add slot machine background
   Image {
     anchors.fill: slotMachine
-    source: "../../assets/tragamonedas.png"
+    source: "../../assets/fondo_b.png"
   }
 
   // add slot machine reel separators (white lines)

@@ -53,8 +53,8 @@ GameWindow {
     Image {
         id: credito
         source: "../assets/credits.png"
-        x: 425
-        y:378
+        x: 380
+        y:535
         width: 150
         height: 50
     }
@@ -84,8 +84,8 @@ GameWindow {
         x: 163
         y: 567
         defaultItemHeight: 73
-        defaultReelWidth: 100
-
+        defaultReelWidth: 106
+        z: 1
 
         // velocity of spin should decrease/increase along with item height
         spinVelocity: Math.round(defaultItemHeight / 80 * 750)
@@ -104,22 +104,21 @@ GameWindow {
 
     Image {
         id: maquina
-        source: "../assets/Frame.png"
-        width: 467
-        height: 532
-        x: 87
+        source: "../assets/Frame_bg.png"
+        width: 430
+        height: 540
+        x: 110
         y: 400
-
     }
 
 
     Image {
         id: titulo
         source: "../assets/title.png"
-        width: 490
-        height: 320
-        x: 85
-        y: 85
+        width: 470
+        height: 340
+        x: 100
+        y: 75
     }
 
 
@@ -165,21 +164,11 @@ GameWindow {
     }
 
     Image {
-        id: moneda
-        source: "../assets/Icono-coin.png"
-        x: 113
-        y: 870
-        width: 425
-        height: 175
-        z:1
-    }
-
-    Image {
         id: presionar
         source: "../assets/Iconos-Boton.png"
-        x: 190
+        x: 243
         y: 950
-        width: 275
+        width: 175
         height: 75
         MouseArea {
           anchors.fill: parent
