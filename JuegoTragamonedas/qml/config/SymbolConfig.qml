@@ -7,7 +7,7 @@ SlotMachineModel {
   // configure symbols and frequency of each symbol per reel
   symbols: {
     "cherry":      {
-      frequency: 5,
+      frequency: 3,
       data: {
         source: "icon-cherry.png",
         winFactor: [1, 5, 20]
@@ -15,7 +15,7 @@ SlotMachineModel {
     }, // 5 x cherry
 
     "watermelon":      {
-      frequency: 5,
+      frequency: 3,
       data: {
         source: "icon-watermelon.png",
         winFactor: [1, 5, 20]
@@ -23,7 +23,7 @@ SlotMachineModel {
     }, // 5 x watermelon
 
     "heart":        {
-      frequency: 5,
+      frequency: 3,
       data: {
         source: "icon-heart.png",
         winFactor: [1, 5, 20]
@@ -32,7 +32,7 @@ SlotMachineModel {
 
 
     "bell":        {
-      frequency: 4,
+      frequency: 3,
       data: {
         source: "icon-bell.png",
         winFactor: [1, 8, 30]

@@ -122,7 +122,7 @@ GameWindow {
         y: 85
     }
 
-
+/*
     Image {
         id: pinkmac
         source: "../assets/pinkmac.png"
@@ -153,15 +153,17 @@ GameWindow {
                  NumberAnimation { properties: "scale, opacity"; easing.type: Easing.InOutQuad; duration: 1000  }
              }
 
-    }
-
+    }*/
 
     Image {
-        id: greymac
-        source: "../assets/greymac.png"
+        id: watch
+        source: "../assets/apple_watch.png"
         smooth: true
-        opacity: 0
-        anchors.fill: pinkmac
+        opacity: 1
+        width: 150
+        height: 150
+        x: 247
+        y: 405
     }
 
     Image {
@@ -228,6 +230,21 @@ GameWindow {
         y: 450
         width: 475
         height: 375
+        z:1
+        MouseArea{
+            anchors.fill: parent
+            onClicked: scene.restartGame()
+        }
+    }
+
+    Image {
+        id: win
+        source: "../assets/ganaste.png"
+        visible: false
+        x: 95
+        y: 420
+        width: 475
+        height: 445
         z:1
         MouseArea{
             anchors.fill: parent
@@ -362,14 +379,16 @@ GameWindow {
         function spinEnded() {
           bottomBar.startActive = false
           var won = winValidator.validate(slotMachine)
-          if(won)
-            winValidator.showWinningLines()
-          else if(bottomBar.autoActive)
+          if(won){
+            //winValidator.showWinningLines()
+            win.visible= true
+          }else if(bottomBar.autoActive)
             startSlotMachine()
         }
 
         function restartGame(){
             lost.visible = false
+            win.visible = false
             scene.creditAmount = 4
         }
 
